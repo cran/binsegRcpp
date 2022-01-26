@@ -1,11 +1,11 @@
-514a757f83c5172424680f29e39e2430 *DESCRIPTION
+d1652bea6ea6c37f2a49e6ac003da564 *DESCRIPTION
 c52a2877d1fc4ec0a6340446833e7c65 *NAMESPACE
-b0c22e33f5ea66d4b54c39f33e43c4d4 *NEWS
+4c34254f2c088fc525dd386dcf9e0410 *NEWS
 d29e22032c8178b38d8cd28e2779178e *R/RcppExports.R
 450739221c1d660644b6519b8445194e *R/binseg_normal.R
 43a4dca33ac18fc6318334adad244594 *R/binseg_normal_cv.R
 aeb66a8b6e32a0749fd25200fa84e51c *R/complexity.R
-180676fe35d56c4cd9b164eafa400739 *R/random_set_vec.R
+eb88715b30822d8e05461524aa9ae174 *R/random_set_vec.R
 a12329222a7137d74c44118a0cc9abad *build/vignette.rds
 d1e15c8af994ac616967cb322cdd67fa *inst/doc/cross-validation.R
 487ae16164617f2bc3ae842dad2ce0d5 *inst/doc/cross-validation.Rmd
@@ -25,7 +25,7 @@ e421b6caa98c2ad07ba000389cc2faa0 *man/plot.binseg_normal.Rd
 2087a5a2ced5086b2cb5a452bcf0d849 *man/plot.complexity.Rd
 37462a66c4277c2702cbacc2b57b1afa *man/print.binseg_normal.Rd
 f72b79d7202abd52c5e2e0765bd734d2 *man/print.binseg_normal_cv.Rd
-92ef7951aa9948c348d4b892d29ef5d2 *man/random_set_vec.Rd
+c99b7a302e181ac345414e9136dba56f *man/random_set_vec.Rd
 5ab0e1630d4e45320e7236babde05dd6 *src/RcppExports.cpp
 2dd3489d51dbe1538042981dad7da0a3 *src/binseg_normal.cpp
 4d8027cc1e9bdc8afaf78bc8b34caa6f *src/binseg_normal.h
