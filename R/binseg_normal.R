@@ -1,8 +1,7 @@
 binseg_normal <- structure(function # Binary segmentation, normal change in mean
-### Efficient implementation of binary segmentation for change in
-### mean, max normal likelihood = min square loss. Output includes
-### columns which can be used to compute parameters for a single model
-### in log-linear time.
+### Calls binseg to compute a binary segmentation model for change in
+### mean with constant variance, max normal likelihood = min square
+### loss.
 (data.vec,
 ### Vector of numeric data to segment.
   max.segments=sum(!is.validation.vec),
@@ -15,26 +14,11 @@ binseg_normal <- structure(function # Binary segmentation, normal change in mean
 ### integer vector of positions at which data are measured,
 ### default=1:length(data.vec).
 ){
-  result <- rcpp_binseg_normal(
-    data.vec, max.segments, is.validation.vec, position.vec)
-  na <- function(x)ifelse(x<0, NA, x)
-  ##value<< list with elements subtrain.borders and splits.
-  dt <- with(result, list(
-    subtrain.borders=subtrain.borders,
-    splits=data.table(
-      segments=1:max.segments,##<< number of parameters
-      loss,##<< subtrain square loss
-      validation.loss,##<< validation square loss
-      end=end+1L,##<< index of last data point per segment
-      before.mean,##<< mean before changepoint
-      after.mean=ifelse(after.mean==Inf, NA, after.mean),##<< mean after changepoint
-      before.size,##<< number of data before changepoint
-      after.size=na(after.size),##<< number of data after changepoint
-      invalidates.index=na(invalidates.index+1L),##<< index of model parameter no longer used after this changepoint is used
-      invalidates.after=na(invalidates.after))))##<< idem
-  class(dt) <- c("binseg_normal", class(dt))
-  dt
-  ##end<<
+  binseg(
+    "mean_norm", data.vec, max.segments,
+    is.validation.vec, position.vec)
+### List output from binseg which represents a binary segmentation
+### model.
 }, ex=function(){
 
   x <- c(0.1, 0, 1, 1.1, 0.1, 0)
@@ -130,68 +114,4 @@ binseg_normal <- structure(function # Binary segmentation, normal change in mean
   }
 
 })
-
-print.binseg_normal <- function
-### Print method for binseg_normal.
-(x,
-### data.table from binseg_normal.
-  ...
-### ignored.
-){
-  . <- segments <- end <- loss <- validation.loss <- NULL
-  ## Above to avoid CRAN NOTE.
-  cat("binseg_normal model:\n")
-  print(x$splits[, .(segments, end, loss, validation.loss)])
-}
-
-plot.binseg_normal <- function
-### Plot loss values from binary segmentation.
-(x,
-### data.table from binseg_normal.
-  ...
-### ignored.
-){
-  plot(loss ~ segments, x$splits)
-}
-
-coef.binseg_normal <- function
-### Compute a data table of segment start/end/mean values for all
-### models given by segments.
-(object,
-### data.table from binseg_normal.
-  segments=1:min(nrow(object$splits), 10),
-### integer vector, model sizes in number of segments.
-  ...
-### ignored.
-){
-  before.mean <- after.mean <- end <-
-    invalidates.after <- invalidates.index <- NULL
-  kmax <- nrow(object$splits)
-  if(!(
-    is.integer(segments) &&
-      0<length(segments) &&
-      all(is.finite(segments) & 0<segments & segments <= kmax)
-  )){
-    stop(sprintf("segments must be a vector of unique integers between 1 and %d", kmax))
-  }
-  data.table(segments)[, {
-    i <- 1:segments
-    cum.fit <- object$splits[i]
-    means <- cum.fit[, c(before.mean, after.mean)]
-    means[
-      cum.fit[, .N*invalidates.after+invalidates.index]
-    ] <- NA
-    ord <- order(cum.fit$end)
-    mean.mat <- matrix(means, 2, byrow=TRUE)[, ord]
-    cum.fit[ord, {
-      start <- c(1L, end[-.N]+1L)
-      data.table(
-        start, end,
-        start.pos=object$subtrain.borders[start],
-        end.pos=object$subtrain.borders[end+1],
-        mean=mean.mat[!is.na(mean.mat)])
-    }]
-  }, by="segments"]
-### data.table with one row for each segment.
-}
 

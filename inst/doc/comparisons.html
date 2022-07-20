@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Comparisons</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Comparisons with other packages}
+-->
+
+<h1>Comparisons</h1>
+
+<h2>Comparing loss/parameters to changepoint</h2>
+
+<p>The code below shows how to run the binary segmentation algorithm for
+the model with a change in normal mean and variance.</p>
+
+<pre><code class="r">x &lt;- c(0,0.3,0.2,0.1, 10,11,12,13)
+(bs.fit &lt;- binsegRcpp::binseg(&quot;meanvar_norm&quot;, x))
+#&gt; binary segmentation model:
+#&gt;    segments   end       loss validation.loss
+#&gt;       &lt;int&gt; &lt;int&gt;      &lt;num&gt;           &lt;num&gt;
+#&gt; 1:        1     8 25.3177168               0
+#&gt; 2:        2     4  3.0337421               0
+#&gt; 3:        3     6 -0.1851337               0
+#&gt; 4:        4     2 -1.2067850               0
+</code></pre>
+
+<p>The code below computes the theoretical expected loss, which is the
+same as computed by binsegRcpp:</p>
+
+<pre><code class="r">myvar &lt;- function(y)mean((y-mean(y))^2)
+nll &lt;- function(y)-sum(dnorm(y, mean(y), sqrt(myvar(y)), log=TRUE))
+expected.loss &lt;- c(
+  nll(x),
+  nll(x[1:4])+nll(x[5:8]),
+  nll(x[1:4])+nll(x[5:6])+nll(x[7:8]),
+  nll(x[1:2])+nll(x[3:4])+nll(x[5:6])+nll(x[7:8]))
+rbind(binsegRcpp=bs.fit$splits$loss, expected=expected.loss)
+#&gt;                [,1]     [,2]       [,3]      [,4]
+#&gt; binsegRcpp 25.31772 3.033742 -0.1851337 -1.206785
+#&gt; expected   25.31772 3.033742 -0.1851337 -1.206785
+</code></pre>
+
+<p>The code below runs binary segmentation from the changepoint package
+for comparison:</p>
+
+<pre><code class="r">cpt.fit &lt;- changepoint::cpt.meanvar(
+  x, penalty=&quot;Manual&quot;, pen.value=0, method=&quot;BinSeg&quot;)
+#&gt; Warning in BINSEG(sumstat, pen = pen.value, cost_func = costfunc, minseglen
+#&gt; = minseglen, : The number of changepoints identified is Q, it is advised to
+#&gt; increase Q to make sure changepoints have not been missed.
+#&gt; Warning in tmpvar * (seglen - 1): longer object length is not a multiple of
+#&gt; shorter object length
+changepoint::logLik(cpt.fit)
+#&gt; Warning in .local(object, ...): Not changed to be -2*logLik
+#&gt;    -like -likepen 
+#&gt;      NaN      NaN
+</code></pre>
+
+<p>The code above shows that the changepoint package logLik method
+returns NaN rather than a finite value.</p>
+
+<pre><code class="r">changepoint::param.est(cpt.fit)
+#&gt; $mean
+#&gt; [1]  0.00  0.00  0.00  0.15 11.50
+#&gt; 
+#&gt; $variance
+#&gt; [1]   NA   NA   NA -Inf 1.25   NA
+coef(bs.fit, 2L)
+#&gt;    segments start   end start.pos end.pos  mean    var
+#&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;num&gt;   &lt;num&gt; &lt;num&gt;  &lt;num&gt;
+#&gt; 1:        2     1     4       0.5     4.5  0.15 0.0125
+#&gt; 2:        2     5     8       4.5     8.5 11.50 1.2500
+</code></pre>
+
+<p>The code above shows that changepoint and binsegRcpp mean/variance
+estimates (for 2 segments) are consistent, but changepoint result
+contains extra 0/NA values.</p>
+
+<pre><code class="r">cpt.fit1 &lt;- changepoint::cpt.meanvar(
+  x, penalty=&quot;Manual&quot;, pen.value=0, method=&quot;BinSeg&quot;, Q=1)
+#&gt; Warning in BINSEG(sumstat, pen = pen.value, cost_func = costfunc, minseglen
+#&gt; = minseglen, : The number of changepoints identified is Q, it is advised to
+#&gt; increase Q to make sure changepoints have not been missed.
+changepoint::param.est(cpt.fit1)
+#&gt; $mean
+#&gt; [1]  0.15 11.50
+#&gt; 
+#&gt; $variance
+#&gt; [1] 0.0125 1.2500
+</code></pre>
+
+<p>The code above shows that changepoint package binary segmentation
+returns reasonable parameter estimates if Q=1 changepoint is
+specified.</p>
+
+<pre><code class="r">rbind(
+  changepoint=changepoint::logLik(cpt.fit1)/2,
+  binsegRcpp=bs.fit$splits$loss[2])
+#&gt; Warning in .local(object, ...): Not changed to be -2*logLik
+#&gt;                -like -likepen
+#&gt; changepoint 3.033742 3.033742
+#&gt; binsegRcpp  3.033742 3.033742
+</code></pre>
+
+<p>The code above shows that the changepoint loss (negative log
+likelihood) differs from binsegRcpp/dnorm by a factor of 2.</p>
+
+<p>Note below that binsegRcpp also can compute parameter estimates for
+other model sizes (not limited to 2 segments in this data set),</p>
+
+<pre><code class="r">coef(bs.fit)
+#&gt;     segments start   end start.pos end.pos   mean      var
+#&gt;        &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;num&gt;   &lt;num&gt;  &lt;num&gt;    &lt;num&gt;
+#&gt;  1:        1     1     8       0.5     8.5  5.825 32.83687
+#&gt;  2:        2     1     4       0.5     4.5  0.150  0.01250
+#&gt;  3:        2     5     8       4.5     8.5 11.500  1.25000
+#&gt;  4:        3     1     4       0.5     4.5  0.150  0.01250
+#&gt;  5:        3     5     6       4.5     6.5 10.500  0.25000
+#&gt;  6:        3     7     8       6.5     8.5 12.500  0.25000
+#&gt;  7:        4     1     2       0.5     2.5  0.150  0.02250
+#&gt;  8:        4     3     4       2.5     4.5  0.150  0.00250
+#&gt;  9:        4     5     6       4.5     6.5 10.500  0.25000
+#&gt; 10:        4     7     8       6.5     8.5 12.500  0.25000
+</code></pre>
+
+<h1>Penalized model selection with binsegRcpp and changepoint</h1>
+
+<p>Sometimes we don&#39;t know the desired number of changepoints/segments,
+but we can specify a non-negative penalty value, and we want to select
+the number of changes which minimizes the total cost (loss + penalty *
+number of changes). In that case we can do the following:</p>
+
+<pre><code class="r">penaltyLearning::modelSelection(bs.fit$splits, &quot;loss&quot;, &quot;segments&quot;)
+#&gt;   min.lambda max.lambda min.log.lambda max.log.lambda cum.iterations segments
+#&gt; 4   0.000000   1.021651           -Inf     0.02142019              3        4
+#&gt; 3   1.021651   3.218876     0.02142019     1.16903218              2        3
+#&gt; 2   3.218876  22.283975     1.16903218     3.10386779              1        2
+#&gt; 1  22.283975        Inf     3.10386779            Inf              0        1
+#&gt;         loss validation.loss end depth before.mean before.var after.mean
+#&gt; 4 -1.2067850               0   2     2       0.150    0.02250       0.15
+#&gt; 3 -0.1851337               0   6     2      10.500    0.25000      12.50
+#&gt; 2  3.0337421               0   4     1       0.150    0.01250      11.50
+#&gt; 1 25.3177168               0   8     0       5.825   32.83687         NA
+#&gt;   after.var before.size after.size invalidates.index invalidates.after
+#&gt; 4    0.0025           2          2                 2                 0
+#&gt; 3    0.2500           2          2                 2                 1
+#&gt; 2    1.2500           4          4                 1                 0
+#&gt; 1        NA           8         NA                NA                NA
+</code></pre>
+
+<p>The code above computes a model selection data frame, where every row
+is a model size, and the min.lambda/max.lambda columns indicate the
+penalty values which select that model size. For example if you wanted
+to use a penalty value of 5 then that select the model with 2
+segments, since 5 is between min.lambda=3.21 and max.lambda=22.28.</p>
+
+<p>How could we do something similar with changepoint package? We could
+try the CROPS penalty, but that only works with the PELT method (not
+binary segmentation),</p>
+
+<pre><code class="r">try(changepoint::cpt.meanvar(
+  x, penalty=&quot;CROPS&quot;, method=&quot;BinSeg&quot;, pen.value = c(0, Inf)))
+#&gt; Error in CROPS(data = data, method = method, pen.value = pen.value, test.stat = test.stat,  : 
+#&gt;   CROPS is a valid penalty choice only if method=&quot;PELT&quot;, please change your method or your penalty.
+</code></pre>
+
+<p>Instead we could write a for loop over potential penalty values,</p>
+
+<pre><code class="r">pen.changepoint.list &lt;- list()
+for(penalty in seq(0, 50)){
+  pen.fit &lt;- changepoint::cpt.meanvar(
+    x, penalty=&quot;Manual&quot;, method=&quot;BinSeg&quot;, pen.value=penalty)
+  pen.changepoint.list[[paste(penalty)]] &lt;- data.frame(
+    package=&quot;changepoint&quot;,
+    segments=length(changepoint::cpts(pen.fit))+1L,
+    penalty)
+}
+#&gt; Warning in BINSEG(sumstat, pen = pen.value, cost_func = costfunc, minseglen
+#&gt; = minseglen, : The number of changepoints identified is Q, it is advised to
+#&gt; increase Q to make sure changepoints have not been missed.
+#&gt; Warning in tmpvar * (seglen - 1): longer object length is not a multiple of
+#&gt; shorter object length
+pen.changepoint &lt;- do.call(rbind, pen.changepoint.list)
+library(ggplot2)
+(gg.penalty &lt;- ggplot()+
+  geom_point(aes(
+    penalty, segments, color=package),
+    shape=1,
+    data=pen.changepoint))
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-10"/></p>
+
+<p>The figure above shows that the changepoint package returns 1 segment
+for large penalty values, 2 segments for intermediate penalty values,
+and 6 segments (with 0/NA values) when penalty=0. The method above
+involves running the binary segmentation algorithm for each penalty
+value, which is not necessary. It is more efficient to run the binary
+segmentation algorithm once, and then analyze the loss values to
+determine which penalty values select which model sizes, as is done
+below with binsegRcpp and penaltyLearning. We re-run the
+modelSelection function below for direct comparison with the
+changepoint results (changepoint loss/penalty values are off by a
+factor of two),</p>
+
+<pre><code class="r">library(data.table)
+models &lt;- data.table(
+  package=&quot;binsegRcpp+penaltyLearning&quot;,
+  bs.fit$splits
+)[, cpt.loss := loss*2]
+pen.df &lt;- penaltyLearning::modelSelection(models, &quot;cpt.loss&quot;, &quot;segments&quot;)
+gg.penalty+
+  geom_segment(aes(
+    min.lambda, segments,
+    color=package,
+    xend=max.lambda, yend=segments),
+    size=1,
+    data=pen.df)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAABDlBMVEUAAAAAADoAAGYAOpAAZmYAZrYAv8QzMzM6AAA6ADo6AGY6Ojo6OmY6OpA6ZmY6ZpA6ZrY6kNtNTU1NTW5NTY5NbqtNjshmAABmADpmAGZmOgBmOpBmZgBmZjpmZmZmtttmtv9uTU1uTY5ubqtuq6tuq+SOTU2OTY6ObquOjk2OjsiOq+SOyP+QOgCQOjqQOmaQZgCQZpCQkDqQ2/+rbk2rbo6r5P+2ZgC2Zjq2kDq2tma2/7a2///Ijk3Ijm7Ijo7IyP/I///bkDrbtmbb25Db2//b/7bb/9vb///kq27kq47k/8jk///r6+vy8vL4dm3/tmb/yI7/25D/29v/5Kv//7b//8j//9v//+T///8aTZsdAAAACXBIWXMAAAsSAAALEgHS3X78AAAScklEQVR4nO3ci3ob1QFFYSVGdmgIRSrBAXpRCYG0tenFKW6LQxtD07iYRha+ZN7/RXrmSLIuM3KkmaUtHWuv8hnVsrad+TOykgxpZG4ja6z6C3CryfAbmuE3NMNvaDfD/zjR1P+d866q96U4KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjMjw5KUIjKoN/86z98DTemvhRbW+v8JCmMam1q1UZ/Mle/k/e+A9q+8dstnyKSkuY1NrVqgz+n7+LZ/zOzs74e7fjP+6WVAb/fC87exJvTfx09lP9W+/S2tWq9Ix/UQp/25SWMKm1q9WM7/Fnxe/xt05pCZNau1ot8Kr+tiktYVJrVyv/Op6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKERGZ6cFKER3Qzvbm0+48lJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERqR4clJERpROfz549P47/U5pGlMKuVqVgr/5tnDMvjXo+SHNI1JKV29SuFPPn8a4Hd2dibfPQav+NLcMiuDP3/8w1M/1VeZ1NrVqgz+pN1uP4m31ueQpjGptatV+Yu7S5/xlSaVcjUzPDmplKuZfx1PTorQiAxPTorQiAxPTorQiAxPTorQiAxPTorQiAxPTorQiAxPTorQ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k5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNCLDk5MiNKIy+Msv2h++iLeKP8jt7R+HbyverPXglexsDPzJXnbyJN4q/CC3R/9M3MwGN1/fvjYIPnS2l2U7OzuF92+P/im9uWqlJbRkgFVVDn/59DT+u/izO6WnaD/V31Ap/OWX/W/xfnG34KRSrmZl8OefDdwNv+CkUq5mZfDP2+32jBd3KzukaUxq7WrlX8eTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsOTkyI0IsO//b7t7eGbGTdHI+lk+Lfd93qBRGhEN8O7LNtI+OWeS6lM+qkeP6S3bVKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERmR4clKERrTIxZY71T6F9mGJfJUrz/AredjqM/xKHrb6fF39hmb4Dc3wG5rhN7S54d88a39UYf9kr8IjL79of/iiwieMD6nyhZ4/Pl38YeERv/i64mFZfXPDnz3Jnu8tPP+8vVfhkeFny8mTCp8wPOTbrys87s2zh6eLP+zy91nVw7IGzQ3/36/zH+SCXf4rGFZ65NlepYe9+euLCo87+fzp6eIPO/9t+2GFh61Jc8N/W+1HGOCrPPLy6Wmlh33xUYVPd/74hyqfLnz4+R8qHpbVt9wzPsJXeOTlly8qfsKzJ4s/7qTdbld4WMXPtiYt+Xt8Dr/4I88/e1HpE8ZPVuULDU8wlV6JnO3d/u/xylf1z/NTsNqr+ocVXp5H+Eqv6qv9GmIt8q/jNzTDb2iG39AMv6EZfkMz/IaWMnzvwctPX636i0i1tOG/f2D4iqUA33vvk0Yzy7qN8Lb3/m5++zjeDu/f+lMr3NNc9ZeYXknAv3twtd/phbP7sNP72dHFx0fhdnwbzvjwjnDnqr/E9EoCPpAft8IJ32i0wu2rrw6y3r3GnYMIP/gp4RYsIfjm4HaA7949unjUhw/P88etVX+FCZYEfP+pfviEn8M3s+7gjM8uHr13tOqvMMGSgB9/cRfhL3Yb7+yGnwQvd7fCk4Ff2lUoCfgbv4fn3/LdwiUP3234hK9SCvBuCRl+QzP8hmb4Dc3wG9r/AXz5u4evPyx8AAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-11"/></p>
+
+<p>The figure above shows that binsegRcpp+modelSelection and changepoint
+packages are consistent for penalties larger than about 10. However
+for some small penalty values, between 0 and 6, changepoint returns 2
+segments whereas binsegRcpp+penaltyLearning select 3 or 4 segments.</p>
+
+</body>
+
+</html>

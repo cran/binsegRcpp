@@ -10,23 +10,64 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// rcpp_binseg_normal
-Rcpp::List rcpp_binseg_normal(const Rcpp::NumericVector data_vec, const int kmax, const Rcpp::LogicalVector is_validation_vec, const Rcpp::NumericVector position_vec);
-RcppExport SEXP _binsegRcpp_rcpp_binseg_normal(SEXP data_vecSEXP, SEXP kmaxSEXP, SEXP is_validation_vecSEXP, SEXP position_vecSEXP) {
+// cum_median_interface
+Rcpp::NumericVector cum_median_interface(Rcpp::NumericVector data_vec, Rcpp::NumericVector weight_vec);
+RcppExport SEXP _binsegRcpp_cum_median_interface(SEXP data_vecSEXP, SEXP weight_vecSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type data_vec(data_vecSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type weight_vec(weight_vecSEXP);
+    rcpp_result_gen = Rcpp::wrap(cum_median_interface(data_vec, weight_vec));
+    return rcpp_result_gen;
+END_RCPP
+}
+// depth_first_interface
+Rcpp::DataFrame depth_first_interface(int n_data, int min_segment_length);
+RcppExport SEXP _binsegRcpp_depth_first_interface(SEXP n_dataSEXP, SEXP min_segment_lengthSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n_data(n_dataSEXP);
+    Rcpp::traits::input_parameter< int >::type min_segment_length(min_segment_lengthSEXP);
+    rcpp_result_gen = Rcpp::wrap(depth_first_interface(n_data, min_segment_length));
+    return rcpp_result_gen;
+END_RCPP
+}
+// get_distribution_info
+Rcpp::DataFrame get_distribution_info();
+RcppExport SEXP _binsegRcpp_get_distribution_info() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(get_distribution_info());
+    return rcpp_result_gen;
+END_RCPP
+}
+// binseg_interface
+Rcpp::List binseg_interface(const Rcpp::NumericVector data_vec, const Rcpp::NumericVector weight_vec, const int max_segments, const int min_segment_length, const std::string distribution_str, const std::string container_str, const Rcpp::LogicalVector is_validation_vec, const Rcpp::NumericVector position_vec);
+RcppExport SEXP _binsegRcpp_binseg_interface(SEXP data_vecSEXP, SEXP weight_vecSEXP, SEXP max_segmentsSEXP, SEXP min_segment_lengthSEXP, SEXP distribution_strSEXP, SEXP container_strSEXP, SEXP is_validation_vecSEXP, SEXP position_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type data_vec(data_vecSEXP);
-    Rcpp::traits::input_parameter< const int >::type kmax(kmaxSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type weight_vec(weight_vecSEXP);
+    Rcpp::traits::input_parameter< const int >::type max_segments(max_segmentsSEXP);
+    Rcpp::traits::input_parameter< const int >::type min_segment_length(min_segment_lengthSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type distribution_str(distribution_strSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type container_str(container_strSEXP);
     Rcpp::traits::input_parameter< const Rcpp::LogicalVector >::type is_validation_vec(is_validation_vecSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector >::type position_vec(position_vecSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_binseg_normal(data_vec, kmax, is_validation_vec, position_vec));
+    rcpp_result_gen = Rcpp::wrap(binseg_interface(data_vec, weight_vec, max_segments, min_segment_length, distribution_str, container_str, is_validation_vec, position_vec));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_binsegRcpp_rcpp_binseg_normal", (DL_FUNC) &_binsegRcpp_rcpp_binseg_normal, 4},
+    {"_binsegRcpp_cum_median_interface", (DL_FUNC) &_binsegRcpp_cum_median_interface, 2},
+    {"_binsegRcpp_depth_first_interface", (DL_FUNC) &_binsegRcpp_depth_first_interface, 2},
+    {"_binsegRcpp_get_distribution_info", (DL_FUNC) &_binsegRcpp_get_distribution_info, 0},
+    {"_binsegRcpp_binseg_interface", (DL_FUNC) &_binsegRcpp_binseg_interface, 8},
     {NULL, NULL, 0}
 };
 
