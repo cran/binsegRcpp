@@ -1,7 +1,7 @@
 Package: binsegRcpp
 Type: Package
 Title: Efficient Implementation of Binary Segmentation
-Version: 2022.7.19
+Version: 2022.7.21
 Author: Toby Dylan Hocking
 Maintainer: Toby Dylan Hocking <toby.hocking@r-project.org>
 Description: Standard template library 
@@ -18,6 +18,6 @@ Suggests: covr, penaltyLearning, directlabels, ggplot2, testthat,
 VignetteBuilder: knitr
 RoxygenNote: 7.1.2
 NeedsCompilation: yes
-Packaged: 2022-07-20 20:50:30 UTC; th798
+Packaged: 2022-08-05 16:37:09 UTC; tdhock
 Repository: CRAN
-Date/Publication: 2022-07-20 21:00:02 UTC
+Date/Publication: 2022-08-07 06:10:10 UTC
